@@ -73,7 +73,7 @@ public class DatePickerFragmentDialog extends DialogFragment {
         if (params == null) {
             params = new WindowManager.LayoutParams();
         }
-        params.width = dp2Px(getDialog().getContext(), 500);
+        params.width = dp2Px(getDialog().getContext(), width);
         window.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00000000")));
         window.setAttributes(params);
         fullScreenImmersive(window.getDecorView());
