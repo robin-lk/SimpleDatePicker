@@ -18,11 +18,11 @@ import java.util.List;
  */
 public class DatePickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public DatePickerAdapter() {
+    public DatePickerAdapter(int year,int month,int day) {
         Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH) + 1;
-        day = calendar.get(Calendar.DAY_OF_MONTH);
+        this.year =year;
+        this.month = month;
+        this.day = day;
     }
 
     private List<DatePickerPack> list = new ArrayList<>();

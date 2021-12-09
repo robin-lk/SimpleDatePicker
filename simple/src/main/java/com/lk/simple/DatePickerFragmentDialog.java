@@ -29,7 +29,7 @@ import java.util.List;
  * @author wangjunjie 2021-12-08
  */
 public class DatePickerFragmentDialog extends DialogFragment {
-    private final DatePickerAdapter adapter = new DatePickerAdapter();
+    private DatePickerAdapter adapter = null;
     private RecyclerView rv;
     private TextView txtLift, txtRight, txtDateTitle, txtLiftYear, txtRightDay;
     private View btnCancel, btnOk;
@@ -46,10 +46,11 @@ public class DatePickerFragmentDialog extends DialogFragment {
         this.year = year;
         this.month = month - 1;
         this.day = day;
-
         selectYear = year;
         selectMonth = month + 1;
         selectDay = day;
+        adapter = new DatePickerAdapter(year, month, day);
+
     }
 
     private int width = 550;
@@ -142,7 +143,8 @@ public class DatePickerFragmentDialog extends DialogFragment {
         });
 
         rv.setLayoutManager(new GridLayoutManager(getContext(), 7));
-        rv.setAdapter(adapter);
+        if (adapter != null)
+            rv.setAdapter(adapter);
         txtRight.setOnClickListener(v -> {
             month++;
             List<DatePickerPack> date = getDate(year, month, day);
