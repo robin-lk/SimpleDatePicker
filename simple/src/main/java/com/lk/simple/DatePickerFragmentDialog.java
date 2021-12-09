@@ -29,7 +29,7 @@ import java.util.List;
  * @author wangjunjie 2021-12-08
  */
 public class DatePickerFragmentDialog extends DialogFragment {
-    private DatePickerAdapter adapter = new DatePickerAdapter();
+    private final DatePickerAdapter adapter = new DatePickerAdapter();
     private RecyclerView rv;
     private TextView txtLift, txtRight, txtDateTitle, txtLiftYear, txtRightDay;
     private View btnCancel, btnOk;
@@ -73,7 +73,7 @@ public class DatePickerFragmentDialog extends DialogFragment {
         if (params == null) {
             params = new WindowManager.LayoutParams();
         }
-        params.width = dp2Px(getDialog().getContext(), width);
+        params.width = dp2Px(getDialog().getContext(), 500);
         window.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00000000")));
         window.setAttributes(params);
         fullScreenImmersive(window.getDecorView());
@@ -95,7 +95,7 @@ public class DatePickerFragmentDialog extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = inflater.inflate(R.layout.date_picker_day_layout, container, false);
+        View inflate = inflater.inflate(R.layout.dialog_simple_date_picker_layout, container, false);
         rv = inflate.findViewById(R.id.rv_date);
         txtRight = inflate.findViewById(R.id.txt_right);
         txtLift = inflate.findViewById(R.id.txt_lift);
