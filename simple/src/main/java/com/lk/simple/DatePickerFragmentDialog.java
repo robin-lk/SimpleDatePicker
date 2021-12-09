@@ -42,6 +42,16 @@ public class DatePickerFragmentDialog extends DialogFragment {
     private int selectMonth = month + 1;
     private int selectDay = day;
 
+    public void initDate(int year, int month, int day) {
+        this.year = year;
+        this.month = month - 1;
+        this.day = day;
+
+        selectYear = year;
+        selectMonth = month + 1;
+        selectDay = day;
+    }
+
     private int width = 550;
 
     public void setWidth(int width) {
