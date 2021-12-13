@@ -1,11 +1,13 @@
 package com.example.dome;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lk.simple.DatePickerFragmentDialog;
 
+import java.io.File;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,5 +41,34 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }.start();
+        getDbFile();
+    }
+
+
+    private void getDbFile() {
+
+        File databases = getDir("databases", MODE_APPEND);
+        File database = getDir("database", MODE_APPEND);
+        File obbDir = getObbDir();
+        if (obbDir != null) {
+            Log.e("obbDir", obbDir.toString());
+        }
+        File oo = getDatabasePath("oo");
+        File filesDir = getFilesDir();
+        File dd = getDatabasePath("dd");
+        if (dd != null) {
+            Log.e("dd", dd.toString());
+        }
+        if (databases.exists() && databases.isDirectory()) {
+            Log.e("file", databases.toString());
+            Log.e("filesDir", filesDir.toString());
+            Log.e("database", database.toString());
+            File[] files = databases.listFiles();
+            if (files != null)
+                for (File file : files) {
+                    Log.e("file", file.toString());
+                }
+        }
+
     }
 }
